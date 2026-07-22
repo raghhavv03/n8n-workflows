@@ -2,7 +2,7 @@
 
 ![n8n](https://img.shields.io/badge/n8n-Workflow%20Automation-FF6D5A?style=for-the-badge&logo=n8n&logoColor=white)
 ![AI Agents](https://img.shields.io/badge/AI%20Agents-LangChain%20%26%20MCP-412991?style=for-the-badge&logo=openai&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-blue.style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 A curated collection of production-ready **n8n workflows**, **multi-agent architectures**, **MCP (Model Context Protocol) servers**, and enterprise automation solutions designed for Sales Development, RevOps, Financial Portfolio Assistant, Voice AI, and personal productivity.
 
