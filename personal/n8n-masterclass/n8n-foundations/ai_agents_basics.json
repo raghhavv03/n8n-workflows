@@ -1,0 +1,49 @@
+{
+  "name": "Foundations \u2014 AI Agents Basics",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true
+      },
+      "id": "fai01",
+      "name": "When Chat Message Received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Introductory AI Agent demonstration."
+        }
+      },
+      "id": "fai02",
+      "name": "Basic AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        440,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "When Chat Message Received": {
+      "main": [
+        [
+          {
+            "node": "Basic AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

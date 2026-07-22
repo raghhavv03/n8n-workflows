@@ -1,0 +1,49 @@
+{
+  "name": "Personal \u2014 AI Voice Assistant (n8n Orchestrated)",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "voice-input"
+      },
+      "id": "voice01",
+      "name": "Webhook Voice Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Process voice transcripts, perform actions, and format audio output payloads."
+        }
+      },
+      "id": "voice02",
+      "name": "Voice Assistant Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        440,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook Voice Trigger": {
+      "main": [
+        [
+          {
+            "node": "Voice Assistant Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Foundations \u2014 API Basics",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "fapi01",
+      "name": "On Workflow Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://jsonplaceholder.typicode.com/posts/1"
+      },
+      "id": "fapi02",
+      "name": "HTTP Request Node",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "On Workflow Start": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request Node",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Masterclass \u2014 Form Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Consultation Request"
+      },
+      "id": "form01",
+      "name": "On Form Submission",
+      "type": "n8n-nodes-base.n8nFormTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "channel": "leads",
+        "text": "=New form lead: {{ $json[\"Full Name\"] }}"
+      },
+      "id": "form02",
+      "name": "Send Slack Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "On Form Submission": {
+      "main": [
+        [
+          {
+            "node": "Send Slack Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

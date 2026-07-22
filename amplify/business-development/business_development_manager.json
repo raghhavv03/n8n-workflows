@@ -1,0 +1,136 @@
+{
+  "name": "Amplify \u2014 Business Development Manager",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true
+      },
+      "id": "bd01-trigger",
+      "name": "When Chat Message Received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are the Business Development Manager orchestrator. Delegate tasks to Sales Prospecting, RevOps, and SDR sub-agents to qualify and convert leads."
+        }
+      },
+      "id": "bd02-orchestrator",
+      "name": "AI Agent Orchestrator",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "eSRGrwA9kx3etNnz",
+          "mode": "list",
+          "cachedResultName": "Amplify \u2014 Sales Prospecting Sub-Agent"
+        }
+      },
+      "id": "bd03-tool-prospecting",
+      "name": "Call Sales Prospecting Sub-Agent",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        528,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "lUJcXbD6lh5Spdpw",
+          "mode": "list",
+          "cachedResultName": "Amplify \u2014 RevOps Prospecting Sub-Agent"
+        }
+      },
+      "id": "bd04-tool-revops",
+      "name": "Call RevOps Prospecting Sub-Agent",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        688,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "hMHkYfp1kFWgILqu",
+          "mode": "list",
+          "cachedResultName": "Amplify \u2014 SDR Sub-Agent"
+        }
+      },
+      "id": "bd05-tool-sdr",
+      "name": "Call SDR Sub-Agent",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        848,
+        208
+      ]
+    }
+  ],
+  "connections": {
+    "When Chat Message Received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent Orchestrator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Sales Prospecting Sub-Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent Orchestrator",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call RevOps Prospecting Sub-Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent Orchestrator",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call SDR Sub-Agent": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent Orchestrator",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

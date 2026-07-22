@@ -1,0 +1,61 @@
+{
+  "name": "Amplify \u2014 Drive Upload Notifications",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "folder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1mDyz85JNvPnbryb8voF44AO5gWO-8dos",
+          "mode": "id"
+        },
+        "event": "fileCreated"
+      },
+      "id": "w201-drive-trigger",
+      "name": "Google Drive Trigger",
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "channel": "C012345678",
+        "text": "=New file uploaded to Google Drive: {{ $json.name }} ({{ $json.webViewLink }})"
+      },
+      "id": "w202-slack-notify",
+      "name": "Slack Notification",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Slack Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

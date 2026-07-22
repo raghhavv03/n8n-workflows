@@ -1,0 +1,49 @@
+{
+  "name": "Personal \u2014 AI Stock Portfolio Assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true
+      },
+      "id": "stock01",
+      "name": "When Chat Message Received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Analyze stock market tickers and portfolio performance."
+        }
+      },
+      "id": "stock02",
+      "name": "Portfolio Assistant Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        440,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "When Chat Message Received": {
+      "main": [
+        [
+          {
+            "node": "Portfolio Assistant Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

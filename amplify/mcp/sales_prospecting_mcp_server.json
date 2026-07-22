@@ -1,0 +1,52 @@
+{
+  "name": "Amplify \u2014 Sales Prospecting MCP Server",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "sales-prospecting"
+      },
+      "id": "mcp01-trigger",
+      "name": "MCP Server Trigger",
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "eSRGrwA9kx3etNnz",
+          "mode": "list",
+          "cachedResultName": "Amplify \u2014 Sales Prospecting Sub-Agent"
+        }
+      },
+      "id": "mcp02-tool",
+      "name": "Sales Prospecting Sub-Agent Tool",
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2.2,
+      "position": [
+        440,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "MCP Server Trigger": {
+      "main": [
+        [
+          {
+            "node": "Sales Prospecting Sub-Agent Tool",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

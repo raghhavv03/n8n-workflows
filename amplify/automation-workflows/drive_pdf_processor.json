@@ -1,0 +1,60 @@
+{
+  "name": "Amplify \u2014 Drive PDF Processor",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "folder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1mDyz85JNvPnbryb8voF44AO5gWO-8dos",
+          "mode": "id"
+        },
+        "event": "fileCreated"
+      },
+      "id": "w101-drive-trigger",
+      "name": "Google Drive Trigger",
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "pdfExtractText"
+      },
+      "id": "w102-pdf-extract",
+      "name": "Extract PDF Content",
+      "type": "n8n-nodes-base.readBinaryFiles",
+      "typeVersion": 1,
+      "position": [
+        440,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Extract PDF Content",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

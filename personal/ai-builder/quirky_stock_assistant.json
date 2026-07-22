@@ -1,0 +1,49 @@
+{
+  "name": "Personal \u2014 Quirky Stock Assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true
+      },
+      "id": "qstock01",
+      "name": "When Chat Message Received",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Provide fun, witty stock analysis and market trivia."
+        }
+      },
+      "id": "qstock02",
+      "name": "Quirky Stock Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        440,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "When Chat Message Received": {
+      "main": [
+        [
+          {
+            "node": "Quirky Stock Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
